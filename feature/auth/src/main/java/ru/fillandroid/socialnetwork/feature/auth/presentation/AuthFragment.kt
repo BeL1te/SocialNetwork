@@ -1,5 +1,6 @@
 package ru.fillandroid.socialnetwork.feature.auth.presentation
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,7 +18,7 @@ import ru.fillandroid.socialnetwork.common.extensions.show
 import ru.fillandroid.socialnetwork.feature.auth.databinding.FragmentAuthBinding
 import ru.fillandroid.socialnetwork.feature.auth.presentation.AuthViewModel.UiEvent.ShowCodeInput
 import ru.fillandroid.socialnetwork.feature.auth.presentation.AuthViewModel.UiEvent.ShowToast
-import ru.fillandroid.socialnetwork.feature.auth.presentation.AuthViewModel.UiEvent.NavigateToFeed
+import ru.fillandroid.socialnetwork.feature.auth.presentation.AuthViewModel.UiEvent.NavigateFeed
 import ru.fillandroid.socialnetwork.feature.auth.R.string as StringResource
 
 class AuthFragment : Fragment() {
@@ -72,8 +74,8 @@ class AuthFragment : Fragment() {
                     is ShowToast -> {
                         Toast.makeText(context, event.message, Toast.LENGTH_LONG).show()
                     }
-                    is NavigateToFeed -> {
-
+                    is NavigateFeed -> {
+                        findNavController().navigate(Uri.parse("myApp://fragment_feed"))
                     }
                 }
             }

@@ -5,9 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
-import ru.fillandroid.socialnetwork.feature.auth.presentation.AuthFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,12 +16,6 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        supportFragmentManager.commit {
-            replace<AuthFragment>(R.id.fragment_container, "tag")
-            setReorderingAllowed(true)
-            addToBackStack(null)
         }
     }
 }

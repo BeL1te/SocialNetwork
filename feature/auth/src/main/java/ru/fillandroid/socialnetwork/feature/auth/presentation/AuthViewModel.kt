@@ -34,7 +34,7 @@ class AuthViewModel(
         viewModelScope.launchIO(
             onAction = {
                 validateCodeUseCase(code)
-                _eventFlow.emit(UiEvent.NavigateToFeed)
+                _eventFlow.emit(UiEvent.NavigateFeed)
             },
             onError = {
                 it.message?.let { message ->
@@ -47,6 +47,6 @@ class AuthViewModel(
     sealed class UiEvent {
         data class ShowToast(val message: String) : UiEvent()
         data object ShowCodeInput : UiEvent()
-        data object NavigateToFeed : UiEvent()
+        data object NavigateFeed : UiEvent()
     }
 }

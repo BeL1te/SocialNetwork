@@ -9,6 +9,9 @@ import ru.fillandroid.socialnetwork.data.data_source.data.PostEntity
 @Dao
 interface FeedDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPosts(posts: List<PostEntity>)
+
     @Query("SELECT * FROM postentity")
     fun getPosts(): List<PostEntity>
 

@@ -5,16 +5,16 @@ import ru.fillandroid.socialnetwork.domain.model.Post
 
 fun PostEntity.toDomain() = Post(
     id = id,
-    description = title,
+    description = description,
     firstImage = firstImage.toDomain(),
-//    secondImage = secondImage.toDomain(),
+    secondImage = secondImage.toDomain(),
     comment = comment
 )
 
 fun Post.toEntity() = PostEntity(
     id = id,
-    title = description,
+    description = description,
     firstImage = firstImage.toEntity(),
-//    secondImage = secondImage.toEntity(),
+    secondImage = secondImage.toEntity(),
     comment = comment
 )

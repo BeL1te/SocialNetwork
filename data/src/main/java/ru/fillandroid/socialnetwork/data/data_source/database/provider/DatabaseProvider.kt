@@ -13,7 +13,9 @@ object DatabaseProvider {
             applicationContext,
             SocialNetworkDatabase::class.java,
             "social_network_db.db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     fun provideAuthDao(db: SocialNetworkDatabase): AuthDao {
